@@ -28,9 +28,9 @@ const getUserById = (request, response) => {
   }
 
 const createUser = (request, response) => {
-    const { petName } = request.body
+    const { owner, petNames } = request.body
   
-    pool.query('INSERT INTO users (petName) VALUES ($1) RETURNING id', [petName], (error, results) => {
+    pool.query('INSERT INTO users (owner, petNames) VALUES ($1, $2) RETURNING id', [owner, petNames], (error, results) => {
       if (error) {
         throw error
       }
