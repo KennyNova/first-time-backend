@@ -40,11 +40,11 @@ const createUser = (request, response) => {
   
 const updateUser = (request, response) => {
     const id = parseInt(request.params.id)
-    const { petName } = request.body
+    const { owner, petNames } = request.body
   
     pool.query(
-      'UPDATE users SET petName = $1 WHERE id = $3',
-      [petName, id],
+      'UPDATE users SET owner = $1, petNames = $2 WHERE id = $3',
+      [owner, petNames,id],
       (error, results) => {
         if (error) {
           throw error
