@@ -34,7 +34,8 @@ const createUser = (request, response) => {
       if (error) {
         throw error
       }
-      response.status(201).send(`User added with ID: ${results.rows[0].id}`)
+      response.status(201).json(request.body)
+      //response.status(201).send(`User added with owner name ${owner} and pet name(s) ${petNames.json} ID: ${results.rows[0].id}`)
     })
   }
   
@@ -49,7 +50,8 @@ const updateUser = (request, response) => {
         if (error) {
           throw error
         }
-        response.status(200).send(`User modified with ID: ${id}`)
+        //response.status(200).send(`User modified with ID: ${id}`)
+        response.send(request.body)
       }
     )
   }
@@ -61,7 +63,8 @@ const deleteUser = (request, response) => {
       if (error) {
         throw error
       }
-      response.status(200).send(`User deleted with ID: ${id}`)
+      response.status(200).json(request.body)
+      //response.status(200).send(`User deleted with ID: ${id}`)
     })
   }
 
